@@ -1,0 +1,134 @@
+/* Global variables */
+:root {
+  --dark-purple: #3b185f;
+  --light-purple: #c060a1;
+  --beige: #f2dac2;
+  --yellow: #fff206;
+  --dark: #1f0b34;
+  --dark-border: 1px solid #3b185f;
+  --light-border: 1px solid #c060a1;
+}
+
+/* General classes */
+.bg-color-dark {
+  background-color: var(--dark-purple) !important;
+}
+
+.bg-color-light {
+  background-color: var(--light-purple) !important;
+}
+
+.bg-color-beige {
+  background-color: var(--beige) !important;
+}
+
+.bg-color-yellow {
+  background-color: var(--yellow) !important;
+}
+
+.text-color-dark {
+  color: var(--dark-purple) !important;
+}
+
+.text-color-light {
+  color: var(--light-purple) !important;
+}
+
+.text-color-beige {
+  color: var(--beige) !important;
+}
+
+.text-color-yellow {
+  color: var(--yellow) !important;
+}
+
+.min-vh-85 {
+    min-height: calc(100vh - (59px + 56px)); /* Navbar and Footer heights */
+}
+
+/* Navbars */
+.main-nav .nav-link:hover {
+  color: var(--light-purple) !important;
+}
+
+.main-nav .navbar-nav .nav-link.active {
+  color: var(--light-purple) !important;
+  font-weight: bold;
+}
+
+/* Humbugger menu */
+.main-nav .navbar-toggler {
+  border-color: var(--light-purple);
+}
+
+.main-nav .navbar-toggler-icon {
+  background-image: url("/static/imgs/humbugger_light.png");
+}
+
+/* Authentication forms */
+.af-container {
+  width: 50%;
+}
+
+.authentication-forms input,
+.authentication-forms input:focus {
+  border: var(--light-border);
+}
+
+.authentication-forms input[type="submit"] {
+  background-color: var(--yellow);
+}
+
+.authentication-forms .input-group-text {
+  border: var(--light-border) !important;
+  width: 28%;
+}
+
+/* Account cards */
+.card .card-body a:hover {
+  color: var(--yellow) !important;
+}
+
+/* List of recommendations */
+.recommendations {
+  border: var(--dark-border);
+}
+
+.recommendations p {
+  border-bottom: var(--dark-border);
+}
+
+.recommendations p:last-child {
+  border: none;
+}
+
+/* Search bar */
+.search-input {   
+  border-radius: 16px;
+  border: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: var(--beige) !important;
+    color: var(--dark-purple) !important;
+    outline: none;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--dark);
+}
+
+@media screen and (max-width: 700px) {
+  .af-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .authentication-forms .input-group-text {
+    width: unset;
+    min-width: 22% !important;
+  }
+}

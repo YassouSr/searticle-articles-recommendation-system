@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+
+{% block title %} Historique {% endblock %} 
+
+{% block navbar %} {% include './account/account_nav.html' %} {% endblock %} 
+
+{% block content %}
+<div class="pb-2 pt-4 bg-color-dark text-color-beige min-vh-85">
+  <div class="container">
+    <h2 class="mb-4">Historique</h2>
+
+    {% if bookmarks.items %}
+        <form
+            action="{{ url_for('account.history_search') }}"
+            class="d-flex flex-column align-items-center pb-4"
+            role="search"
+            method="get"
+        >
+        {{ form.q(class_="search-input w-75", placeholder="Rechercher par titre...") }}
+
+        <a
+            class="text-color-light text-decoration-none w-75"
+            href="{{ url_for('account.delete_history') }}"
+            >supprimer tout l'historique ?</a
+        >
+        </form>
+    {% endif %} 
+
+    {% for bookmark in bookmarks.items %}
+        <div class="card mb-4 bg-color-light">
+        <div class="card-body">
+            <h3 class="card-title text-capitalize mb-3 fw-bold">
+            <a
+                class="text-color-dark text-decoration-none"
+                href="{{ url_for('account.description', article_id=bookmark.article_id) }}"
+                target="_blank"
+                >{{ bookmark.article_title }}</a
+            >
+            </h3>
+            <p class="mb-0 text-color-dark">
+                {{ bookmark.seen_on.strftime('%X') }} - {{bookmark.seen_on.strftime('%a, %B %d, %Y') }}
+            </p>
+        </div>
+        </div>
+
+    {% else %}
+        <p>Vous n'avez encore lu aucun article.</p>
+
+    {% endfor %}
+
+    <!-- Pagination Links -->
+    {% if bookmarks.items %} 
+        {% from "pagination.html" import create_pagination %} 
+        {{ create_pagination(bookmarks, link) }} 
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+
+{% block title %} Profil {% endblock %} 
+
+{% block navbar %} {% include './account/account_nav.html' %} {% endblock %}
+
+{% block content %}
+    {% from "form_blueprint.html" import create_form %}
+    {{ create_form('Votre profil', form, "Mettre à jour") }}
+{% endblock %}

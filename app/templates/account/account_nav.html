@@ -1,0 +1,42 @@
+<nav class="navbar sticky-top navbar-expand-lg main-nav bg-color-dark">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('main.index') }}">
+        <img
+          src="{{ url_for('static', filename='imgs/logo_light.png') }}"
+          alt="logo"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link text-color-beige active" aria-current="page" href="{{ url_for('account.home') }}">
+                Principale
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-color-beige" href="{{ url_for('account.history') }}">Historique</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-color-beige" href="{{ url_for('account.profile') }}">Profil</a>
+            </li>
+          <li class="nav-item">
+            <a href="{{ url_for('main.logout') }}" class="nav-link text-color-beige">Se déconnecter</a>
+          </li>
+            </ul>
+        </div>
+      
+    </div>
+  </nav>
+  

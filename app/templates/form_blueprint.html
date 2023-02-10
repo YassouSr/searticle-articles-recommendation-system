@@ -1,0 +1,43 @@
+{% macro create_form(title, form_data, call_to_action, link_data, links=False) %}
+<div
+  class="authentication-forms bg-color-dark text-color-beige d-flex justify-content-center align-items-center min-vh-85"
+>
+  <div class="container">
+    <div class="af-container m-auto">
+      <h2 class="mb-4">{{ title }}</h2>
+
+      <form action="" method="post" class="mb-2">
+        {% for data in form_data %}
+          <div class="input-group my-3">
+            <span
+              class="input-group-text bg-color-light text-color-beige"
+              id="basic-addon1"
+              >{{ data.label.text }}</span
+            >
+            {{ data(class_="form-control bg-color-dark text-color-beige") }}
+          </div>
+        {% endfor %}
+
+        <input
+          class="form-control text-color-dark fw-bold border-0"
+          type="submit"
+          value="{{ call_to_action }}"
+        />
+      </form>
+
+      {% if links == True %} 
+        {% for link in link_data %}
+          <p class="mb-0">
+            {{ link.text }}
+            <a
+              class="text-decoration-none text-color-light"
+              href="{{ url_for(link.url) }}"
+              >{{ link.value }}</a
+            >
+          </p>
+        {% endfor %} 
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+
+{% block title %} S'identifier {% endblock %} 
+
+{% block navbar %}
+    {% include './main/main_nav.html' %}
+{% endblock %}
+
+{% block content %}
+  {% from "form_blueprint.html" import create_form %}
+  {{ create_form(
+    'Connectez-vous à votre compte', 
+    form, 
+    'Connecter', 
+    [
+      {
+        'text':"Vous n'avez pas encore de compte ?", 
+        'url':"main.register", 
+        'value':"S'inscrire"
+      }, 
+      {
+        'text':"Mot de passe oublié ?", 
+        'url':"main.reset_password", 
+        'value':"Réinitialiser"
+      }
+    ], 
+    True) 
+  }}
+{% endblock %}

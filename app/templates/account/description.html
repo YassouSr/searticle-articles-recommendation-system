@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block navbar %} {% include './account/account_nav.html' %} {% endblock %} 
+
+{% block content %}
+<div class="pb-2 pt-4 bg-color-dark text-color-beige min-vh-85">
+  <div class="container">
+    <div class="card mb-4 bg-color-light">
+      <div class="card-body">
+        <h2 class="card-title mb-3 text-capitalize text-color-dark fw-bold">{{ article.title }}</h2>
+        <p>{{ article.authors }}</p>
+        <p>Year of publication : {{ article.year }}</p>
+        <p>
+          Link :
+          <a class="text-color-dark text-decoration-none" href="{{ article.link }}" target="_blank">{{ article.link }}</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="card mb-4 bg-color-light">
+      <div class="card-body">
+        <h3 class="card-title mb-3 text-capitalize text-color-dark">
+          autres articles qui pourraient vous plaire
+        </h3>
+
+        <div class="recommendations rounded-bottom-2">
+          {% for article in recommendations %}
+            <p class="p-2 mb-0">
+              <a class="text-color-dark d-block text-decoration-none" href="{{ url_for('account.description', article_id=article.id) }}" target="_blank">{{ article.title }}</a>
+            </p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

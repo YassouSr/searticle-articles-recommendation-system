@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+
+{% block title %} S'inscrire {% endblock %} 
+
+{% block navbar %}
+    {% include './main/main_nav.html' %}
+{% endblock %}
+
+{% block content %}
+{% from "form_blueprint.html" import create_form %}
+{{ create_form(
+    'Créer un compte', 
+    form, 
+    "S'inscrire", 
+    [{'text':"Avez vous déjà un compte ?", 'url':"main.login", 'value':"Se connecter"}], 
+    True) 
+}}
+
+{% endblock %}

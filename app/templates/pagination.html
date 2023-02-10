@@ -1,0 +1,34 @@
+<!-- Pagination Links -->
+{% macro create_pagination(records, link) %}
+<div class="text-center py-4">
+  <!-- Previous page link -->
+  <a
+    href="{{ url_for(link, page=records.prev_num) }} "
+    class="btn fw-bold bg-color-yellow text-color-dark {% if records.page == 1 %} disabled {% endif %}"
+  >
+    &laquo;
+  </a>
+
+  <!-- Loop through the number of pages to display a link for each -->
+  {% for page_num in records.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %} 
+    {% if page_num %}
+      <!-- Check for the active page and set the link to "Active"-->
+      <a
+        href="{{ url_for(link, page=page_num)}}"
+        class="btn fw-bold {% if records.page == page_num %} bg-color-yellow text-color-dark {% else %} bg-color-light {% endif %}"
+      >
+        {{ page_num }}
+      </a>
+
+    {% else %} ... {% endif %} 
+  {% endfor %}
+
+  <!-- Next page link -->
+  <a
+    href="{{ url_for(link, page=records.next_num) }}"
+    class="btn fw-bold bg-color-yellow text-color-dark {% if records.page == records.pages %} disabled {% endif %}"
+  >
+    &raquo;
+  </a>
+</div>
+{% endmacro %}

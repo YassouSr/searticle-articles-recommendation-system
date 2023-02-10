@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+
+{% block title %} Liste des articles {% endblock %} 
+
+{% block navbar %} {% include './account/account_nav.html' %} {% endblock %} 
+
+{% block content %}
+<div class="pb-2 pt-4 bg-color-dark text-color-beige">
+  <div class="container min-vh-85">
+    <form
+      action="{{ url_for('account.article_search') }}"
+      class="d-flex flex-column align-items-center p-4"
+      role="search"
+      method="get"
+    >
+      {{ form.q(class_="search-input w-75", placeholder="Rechercher par titre...") }}
+    </form>
+
+    {% for article in articles.items %}
+    <div class="card mb-4 bg-color-light">
+      <div class="card-body">
+        <h3 class="card-title text-capitalize mb-3 fw-bold">
+          <a
+            class="text-color-dark text-decoration-none"
+            href="{{ url_for('account.description', article_id=article.id) }}"
+            target="_blank"
+            >{{ article.title }}</a
+          >
+        </h3>
+        <p class="card-text">{{ article.authors }}</p>
+        <p class="card-text">Year of publication : {{ article.year }}</p>
+      </div>
+    </div>
+
+    {% else %}
+    <div class="card mb-4 bg-color-light">
+      <div class="card-body">
+        <h3 class="card-title text-capitalize mb-3 fw-bold text-color-dark">
+          No results found.
+        </h3>
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- Pagination Links -->
+    {% from "pagination.html" import create_pagination %} 
+    {{ create_pagination(articles, link) }}
+  </div>
+</div>
+{% endblock %}

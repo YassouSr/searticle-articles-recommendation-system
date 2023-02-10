@@ -1,0 +1,147 @@
+{% extends 'base.html' %} 
+
+{% block title %} Page d'accueil {% endblock %} 
+
+{% block navbar %} {% include './main/main_nav.html' %} {% endblock %}
+
+{% block content %}
+<div class="about text-color-beige py-5" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-7 d-flex flex-column justify-content-around">
+        <p>
+          Ce site est une vitrine de mon algorithme de système de recommandation
+          avec une approche différente des systèmes traditionnels.
+        </p>
+        <p>
+          L'algorithme est développé à l'aide de réseaux de neurones
+          d'apprentissage en profondeur et de traitement du langage naturel. Sur
+          chaque article demandé, il renverra des recommandations en utilisant
+          les citations de la requête.
+        </p>
+        <p>
+          Il renvoie les résultats en moins de temps et avec une grande
+          précision.
+        </p>
+      </div>
+      <div class="col text-center">
+        <img
+          class="w-50"
+          src="http://127.0.0.1:5000/static/imgs/icon_light.svg"
+          alt="icon"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="how-it-works py-5 text-color-dark bg-color-beige">
+  <div class="container">
+    <h2 id="how-it-works" class="mb-4">
+      Fonctionnement de l'algorithme de recommandation
+    </h2>
+    <div class="w-100">
+      <img
+        class="img-fluid"
+        src="http://127.0.0.1:5000/static/imgs/how-it-works.svg"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+
+<div class="tools py-5">
+  <div class="container">
+    <h2 id="tools" class="mb-4 text-color-beige">Les outils utilisés</h2>
+    <div class="row p-1">
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          HTML & CSS
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Bootstrap
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Flask
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          SpaCy
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Gensim
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          PySpark
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          PostgreSQL
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Numpy
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Pandas
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Word2vec NN
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Doc2vec NN
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div
+          class="p-2 m-2 rounded-2 text-center text-color-dark bg-color-beige"
+        >
+          Glove NN
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
