@@ -169,13 +169,13 @@ To run the app on your local machine, apply the following steps :
 
 The following are some screenshots for the web app :
 
-![Landing page and registration]()
+[Landing page and registration](https://user-images.githubusercontent.com/37484871/218470326-bc313365-2414-4ef0-abd5-bf6ff1148505.mp4)
 
-![Forget password functionality]()
+[Forget password functionality](https://user-images.githubusercontent.com/37484871/218470578-64f87866-521a-4813-bf3a-b82b43b3eb28.mp4)
 
-![Account dashboard and main functionalities]()
+[Account dashboard and main functionalities](https://user-images.githubusercontent.com/37484871/218474554-91601844-161c-43df-9c89-e4765fda9ee1.mp4)
 
-![Responsivity]()
+[Responsivity](https://user-images.githubusercontent.com/37484871/218470899-d0ac9d6f-4590-47c8-ac0f-794ad0fc5a39.mp4)
 
 ## References
 
