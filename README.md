@@ -1,6 +1,6 @@
 # Searticle | Article recommendation system
 
-An algorithm for recommending scientific articles based on document citations using neural networks (Deep Learning) and NLP.
+An algorithm for recommending scientific articles based on document citations using neural networks (Deep Learning) and natural language processing (NLP).
 
 ## How it works
 
@@ -32,11 +32,12 @@ The following figure represents citation network of first database (2k articles)
 
 ## Why this algorithm is better than traditional recommendation systems
 
-The citation network allowed us to reduce the space and time complexity of recommendation process and to overcome the limitations of traditional recommenders such as the scalability problem in which the algorithm performed very well in both datasets used, so it is not affected by the amount of data.
+The citation network allowed us to overcome the following limitations of traditional recommendation systems :
 
-Another limitation of the traditional recommender is the sparsity problem which results from a lack of information, so that users do not always vote on the articles viewed, which leads to poor evaluation then weak recommendations. However, it is overcome in this system through the citation network which uses a list of article references instead of user votes.
-
-The third limitation that this algorithm has overcome is the cold start problem of recommendation based on collaborative filtering which does not represent any data to use at the beginning (no users, no votes therefore bad recommendations), but this is not the case in the Searticle system since it uses article references as the base for recommendations.
+1. Reduce the space and time complexity of recommendation process, so instead of calculating the similarity between the query and all articles in the database, we only use the neighbors of the query in the citation graph.
+2. The scalability problem in which the algorithm performed very well in both datasets used, so it is not affected by the amount of data.
+3. The sparsity problem which results from a lack of information, so that users do not always vote on the articles viewed, which leads to poor evaluation then weak recommendations. However, it is overcome in this system through the citation network which uses a list of article references instead of user votes.
+4. The cold start problem of recommendation based on collaborative filtering which does not represent any data to use at the beginning (no users, no votes therefore bad recommendations), but this is not the case in the Searticle system since it uses article references as the base for recommendations.
 
 ## Dataset (corpus)
 
@@ -74,17 +75,17 @@ The second corpus used is the Aminer dataset contains more than 3m articles in j
 
 **Notes :**
 
-- You can download the first dataset from [here](https://github.com/SJ-palpa/curation_projet).
-- You can download Aminer dataset from [here](https://www.kaggle.com/datasets/kmader/aminer-academic-citation-dataset).
-- I have applied pre-processing techniques on both datasets before using them for algorithm, then I have load them to PostgreSQL so it can be easy to query and index the data on the website.
+- You can download the first dataset from [here](https://mega.nz/folder/KUg1gRJS#EJSCyIQWCthBZNGh0K_-sw).
+- You can download Aminer dataset from [here](https://mega.nz/folder/LJ4RHAqL#lKtwKPSrXqoFh4qO45O1iw).
+- The data in the links above is data after pre-processing, but you can find its original source in the References section.
 
 ## Binary data
 
 The algorithm needs deep learning model data to restore the model and run the algorithm. These data contains neural network parameters, including weights and biases.
 
-You can download binary data for model of first dataset from [here](https://www.kaggle.com/code/yassou432/random-data-for-recommendation-part-3/data). You need only two binary files ```glove_w2v_embeddings.pkl``` and ```glove_knn_model.pkl```.
+You can download binary data for model of first dataset from [here](https://mega.nz/folder/WMYXHAwD#9NQDU2O9vuFj3VjGxh6NKw). You need only two binary files ```glove_w2v_embeddings.pkl``` and ```glove_knn_model.pkl```.
 
-and the binary data for model of second dataset from [here].
+and the binary data for model of second dataset from [here](https://mega.nz/folder/vNpR0TxJ#fmtDxz-EtFmzYO0zJZ01nA).
 
 **Important :** Without binary files, the algorithm cannot be executed, and they must be located inside the folder ```app/bin```.
 
@@ -101,7 +102,12 @@ Searticle is a small web application whose main purpose is to show the use of th
 
 To run the app on your local machine, apply the following steps :
 
-1. Clone the repo.
+1. Clone the repo :
+
+    ```git
+    git clone https://github.com/YassouSr/searticle-articles-recommendation-system.git
+    ```
+
 2. Create an environment variable :
 
     ```cmd
@@ -138,19 +144,65 @@ To run the app on your local machine, apply the following steps :
 6. Create app database schemas :
 
     ```cmd
-    flask db init
+    flask db stamp head
     flask db migrate
-    flask upgrade
+    flask db upgrade
     ```
 
-7. Insert the json data to PostgreSQL (articles) by executing the following script (**important**) :
+7. Upload json data from previous links and extract the file inside the folder ```[ROOT_FOLDER]/data/```. If you've changed the file path, make sure to insert the new path inside ```load_json_to_postgre.py``` script.
+8. Insert the json data to PostgreSQL (articles) by executing the following script (**important**) :
 
     ```cmd
     py load_json_to_postgre.py
     ```
 
-8. Run the flask app :
+    The above script must be executed after first migration *only* and must return no errors to make sure that articles are successfully uploaded to PostgreSQL.
+
+9. Upload binary files from previous links and extract them inside the folder ```app/bin```. If you've changed the path, make sure to insert the new path inside ```recommender/config.py``` script.
+10. Run the flask app :
 
     ```cmd
     py execute.py 
     ```
+
+## Screenshots
+
+The following are some screenshots for the web app :
+
+![Landing page and registration]()
+
+![Forget password functionality]()
+
+![Account dashboard and main functionalities]()
+
+![Responsivity]()
+
+## References
+
+Some references that were helpful when building this project :
+
+1. [Link to the original first dataset](https://github.com/SJ-palpa/curation_projet) (release v1.0).
+2. [Link to the original second dataset](https://www.kaggle.com/datasets/kmader/aminer-academic-citation-dataset) (release v2.0).
+3. Paul Resnick et Hal Varian. “Recommender systems”. T. 40. 1997, pp. 56-58.
+4. F.O. Isinkaye, Y.O. Folajimi et B.A. Ojokoh. “Recommendation systems : principles, methods and evaluation”. 2015.
+5. Marc Bertin et Jean-Pierre Descles. “Que nous apprennent les citations bibliographiques des articles scientifiques ? Une contribution linguistique à l’évaluation de la production scientifique”. Laboratoire LaLIC. Paris-Sorbonne, 2007.
+6. Haifeng Liu et al. “Context-Based Collaborative Filtering for Citation Recommendation”. 1er octobre 2015.
+7. Chandra Bhagavatula et al. “Content-Based Citation Recommendation”. 22 février 2018.
+8. Kazunari Sugiyama et Min-Yen Kan. “A Comprehensive Evaluation of Scholarly Paper Recommendation Using Potential Citation Papers”. 1er juin 2015.
+9. Trevor Strohman, Bruce Croft et David Jensen. “Recommending citations for academic papers”. In : Proceedings of the 30th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval. 2007, pp. 705- 706.
+
+## Releases
+
+**Release v1.0** : includes basic website functionalities including :
+
+- User registration
+- Login
+- Logout
+- Forgot and reset password
+- List articles with pagination
+- Search for articles by title
+- Compute and display recommendations for the article consulted
+
+The small dataset has been used in this release for testing purposes only.
+
+**Release v2.0** : upgrade the algorithm to use big data API Spark with Aminer dataset.

@@ -31,4 +31,4 @@ types = {
 }
 
 # Executed only once after the first migration to load data to PostgreSQL
-df.to_sql(name="article", if_exists="fail", index=False, dtype=types, con=engine)
+df.to_sql(name="article", if_exists="append", index=False, dtype=types, con=engine)
